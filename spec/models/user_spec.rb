@@ -14,4 +14,9 @@ RSpec.describe User, :type => :model do
     expect(build(:user, remember_token: nil)).not_to be_valid
   end
 
+  it "保持するトークンは40文字" do
+    expect(build(:user).remember_token.length).to eq 40
+    expect(build(:user, remember_token: 'hoge')).not_to be_valid
+  end
+
 end
