@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    name 'Mike'
+    name { Faker::Name.name }
+    remember_token User.encrypt(User.new_remember_token)
   end
 end
